@@ -14,9 +14,9 @@ const HP = dynamic(() => import('../components/homepage'), {
 const Quote = dynamic(() => import('../components/quote'), {
   loading: () => <p>Loading quote...</p>,
 });
-const Histoire = dynamic(() => import('../components/histoire'), {
-  loading: () => <p>Loading Histoire...</p>,
-});
+// const Histoire = dynamic(() => import('../components/histoire'), {
+//   loading: () => <p>Loading Histoire...</p>,
+// });
 const Etiquette = dynamic(() => import('../components/etiquette'), {
   loading: () => <p>Loading etiquette...</p>,
 });
@@ -34,7 +34,7 @@ const Homepage = () => {
         <Header/>
         <HP/>
         <Quote/>
-        <Histoire/>
+        {/* <Histoire/> */}
         <Etiquette/>
         <Message />
         <Formulaire/>

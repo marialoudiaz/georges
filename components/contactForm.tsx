@@ -7,27 +7,22 @@ import timbre from '../public/img/timbre.png';
 import logo from '../public/georges-signature-aioli.png'
 
 const ContactForm = () => {
-  const yesmessage = ['See you soon ! 🌟', 'Au plaisir de vous rencontrer ! 🌟'];
-  const nomessage = ['Please, try again soon :)', 'Veuillez réessayer ultérieurement :)'];
   const [emailData, setEmailData] = useState({ prenom: '', email: '', message: '' });
   const [message, setMessage] = useState('');
   const [submitting, setSubmitting] = useState(false);
-  const [question, setQuestion] = useState('');
-  const [acceptTerms, setAcceptTerms] = useState(false);
-  const isEnglish = 'EN'; // ou 'FR'
-
   const id = location.pathname.split('/').pop();
   const form = useRef();
+	
   const sendEmail = (e) => {
     e.preventDefault();
     setSubmitting(true);
     emailjs
-      .sendForm('service_ivm0jcp', 'template_9e5o1we', form.current, {
-        publicKey: 'B1zXmJt5Z5YABJKhe',
+      .sendForm('service_t76tx1l', 'template_dmjecue', form.current, {
+        publicKey: 'PF1HJ0vQ3vihAdtYb',
       })
       .then(
         () => {
-          setMessage(isEnglish === 'EN' ? yesmessage[0] : yesmessage[1]);
+          setMessage('Message reçu');
           setSubmitting(false);
         },
         (error) => {
@@ -40,16 +35,12 @@ const ContactForm = () => {
   const handleInputChange = (e) => {
     setEmailData({ ...emailData, [e.target.id]: e.target.value });
   };
-  const handleChange = (e) => {
-    const valueC = e.target.value;
-    setQuestion(valueC);
-    handleSubmitQuestion(valueC);
-  };
+
 
   return (
     <div className="form-wrapper">
 
-			 <h1>Précommander mon pôt d'aïoli pour 2026</h1>
+			 <h1>Précommander mon pot d'aïoli pour 2026</h1>
 
       <div className="form-header">
 					<Image src={logo} width={170} height={50} alt="logo"/>

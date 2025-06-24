@@ -48,6 +48,8 @@ const Main = () => {
             strings: ['Depuis ce jour, chaque pot d’aïoli Georges contient un peu de cette légende'],
             autoStart: true,
             loop: true,
+            cursor: '',
+
           }}
         />
       </p>
