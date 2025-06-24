@@ -10,7 +10,7 @@ const Message = () => {
   return (
     <div>
       <Marquee speed={30} style={{ marginTop: '1rem', borderTop: '2px solid black', borderBottom: '2px solid black', padding: '1rem' }}>
-      <h2 style={{fontSize:'3rem'}}>seulement en France • une recette unique et naturelle • sans gluten, sans lactose, sans sucres raffinés, vegan • rendez-vous en 2026 • </h2>
+      <h2 id='msg'>seulement en France • une recette unique et naturelle • sans gluten, sans lactose, sans sucres raffinés, vegan • rendez-vous en 2026 • </h2>
       </Marquee> 
     </div>
   );

@@ -121,6 +121,7 @@ p{
   align-items: center;
   background-color: rgb(249, 242, 228);
   padding: 20rem 0;
+  text-align: center;
   & div{
     display: flex;
     flex-direction: column;
@@ -445,4 +446,22 @@ select {
 
 .rfm-marquee-container{
   margin-top: 0rem!important;
+}
+
+#msg  {
+  font-Size:3rem;
+}
+@media screen and (max-width: 768px) {
+#msg  {
+  font-Size:1.5rem;
+}
+h1{
+  font-size: 20px;
+}
+h2{ //titres (autre que tout premier)
+  font-size: 20px;
+}
+h3{
+  font-size: 15px;
+}
 }
