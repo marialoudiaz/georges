@@ -39,7 +39,7 @@ const ContactForm = () => {
   return (
     <div className="form-wrapper">
 
-			 <h1>Précommander mon pot d'aïoli pour 2026</h1>
+			 <h1>Précommander mon pot d&apos;aïoli pour 2026</h1>
 
       <div className="form-header">
 					<Image src={logo} width={170} height={50} alt="logo"/>
@@ -50,23 +50,12 @@ const ContactForm = () => {
 
       <form ref={form} onSubmit={sendEmail} className="form-grid">
         <div className="form-group">
-          <label>Nom</label>
+          <label>Prénom</label>
           <input
             type="text"
             id="prenom"
             name="user_name"
             value={emailData.prenom}
-            onChange={handleInputChange}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label>Prénom</label>
-          <input
-            type="email"
-            id="email"
-            name="user_email"
-            value={emailData.email}
             onChange={handleInputChange}
             required
           />
