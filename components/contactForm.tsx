@@ -10,9 +10,8 @@ const ContactForm = () => {
   const [emailData, setEmailData] = useState({ prenom: '', email: '', message: '' });
   const [message, setMessage] = useState('');
   const [submitting, setSubmitting] = useState(false);
-  const id = location.pathname.split('/').pop();
   const form = useRef();
-	
+
   const sendEmail = (e) => {
     e.preventDefault();
     setSubmitting(true);
