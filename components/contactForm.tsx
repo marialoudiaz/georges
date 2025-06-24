@@ -1,22 +1,20 @@
 import React, { useState, useRef } from 'react';
 import emailjs from '@emailjs/browser';
-
-//Images
 import Image from 'next/image';
 import timbre from '../public/img/timbre.png';
-import logo from '../public/georges-signature-aioli.png'
+import logo from '../public/georges-signature-aioli.png';
 
 const ContactForm = () => {
   const [emailData, setEmailData] = useState({ prenom: '', email: '', message: '' });
   const [message, setMessage] = useState('');
   const [submitting, setSubmitting] = useState(false);
-const form = useRef<HTMLFormElement>(null);
+  const form = useRef<HTMLFormElement>(null);
 
-  const sendEmail = (e) => {
+  const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSubmitting(true);
     emailjs
-      .sendForm('service_t76tx1l', 'template_dmjecue', form.current, {
+      .sendForm('service_t76tx1l', 'template_dmjecue', form.current!, {
         publicKey: 'PF1HJ0vQ3vihAdtYb',
       })
       .then(
@@ -26,26 +24,25 @@ const form = useRef<HTMLFormElement>(null);
         },
         (error) => {
           console.log('FAILED...', error.text);
-          setMessage('message non recu');
+          setMessage('message non reçu');
           setSubmitting(false);
         }
       );
   };
-  const handleInputChange = (e) => {
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmailData({ ...emailData, [e.target.id]: e.target.value });
   };
 
-
   return (
     <div className="form-wrapper">
-
-			 <h1>Précommander mon pot d&apos;aïoli pour 2026</h1>
+      <h1>Précommander mon pot d&apos;aïoli pour 2026</h1>
 
       <div className="form-header">
-					<Image src={logo} width={170} height={50} alt="logo"/>
+        <Image src={logo} width={170} height={50} alt="logo" />
         <h1 className="form-title">
-					<Image src={timbre} width={170} height={50} alt="timbre canigo" />
-				</h1>
+          <Image src={timbre} width={170} height={50} alt="timbre canigo" />
+        </h1>
       </div>
 
       <form ref={form} onSubmit={sendEmail} className="form-grid">
@@ -60,7 +57,7 @@ const form = useRef<HTMLFormElement>(null);
             required
           />
         </div>
-				<div className="form-group">
+        <div className="form-group">
           <label>Email</label>
           <input
             type="email"
