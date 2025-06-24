@@ -10,7 +10,7 @@ const ContactForm = () => {
   const [emailData, setEmailData] = useState({ prenom: '', email: '', message: '' });
   const [message, setMessage] = useState('');
   const [submitting, setSubmitting] = useState(false);
-  const form = useRef();
+const form = useRef<HTMLFormElement>(null);
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -26,7 +26,7 @@ const ContactForm = () => {
         },
         (error) => {
           console.log('FAILED...', error.text);
-          setMessage(isEnglish === 'EN' ? nomessage[0] : nomessage[1]);
+          setMessage('message non recu');
           setSubmitting(false);
         }
       );
