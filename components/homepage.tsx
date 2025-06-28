@@ -8,7 +8,7 @@ const Main = () => {
   return (
     <>
     <video className='hp-video' autoPlay muted playsInline>
-        <source src="/video/georges-hp-lebon.mp4" type="video/mp4" />
+        <source src="/video/georges-hp-lebon.mp4" type='video/mp4' />
       </video>
     </>
       
