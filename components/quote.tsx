@@ -42,7 +42,7 @@ const Main = () => {
         <h2 ref={el2}>la patience du mortier,</h2>
         <h2 ref={el3}>et le mystère de l’ail sauvage.</h2>
       </div>
-        <p ref={el4}>
+        <div ref={el4} style={{color:'black'}}>
         <Typewriter
           options={{
             strings: ['Depuis ce jour, chaque pot d’aïoli Georges contient un peu de cette légende'],
@@ -52,7 +52,7 @@ const Main = () => {
 
           }}
         />
-      </p>
+      </div>
     </div>
   );
 };
