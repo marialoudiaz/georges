@@ -1,38 +1,61 @@
-import React, { useState, useRef } from 'react';
-import emailjs from '@emailjs/browser';
+import React, { useState, useRef, useEffect } from 'react';
+// import emailjs from '@emailjs/browser';
 import Image from 'next/image';
-import timbre from '../public/img/timbre.png';
-import logo from '../public/georges-signature-aioli.png';
+import timbre from '../../public/img/timbre.png';
+import logo from '../../public/georges-signature-aioli.png';
 
 const ContactForm = () => {
-  const [emailData, setEmailData] = useState({ prenom: '', email: '', message: '' });
+  const [emailData, setEmailData] = useState({ prenom: '', nom:'', email: '' });
   const [message, setMessage] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const form = useRef<HTMLFormElement>(null);
 
-  const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
+  // const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault();
+  //   setSubmitting(true);
+  //   emailjs
+  //     .sendForm('service_t76tx1l', 'template_w0m0cnq', form.current!, {
+  //       publicKey: 'PF1HJ0vQ3vihAdtYb',
+  //     })
+  //     .then(
+  //       () => {
+  //         setMessage('Message reçu');
+  //         setSubmitting(false);
+  //       },
+  //       (error) => {
+  //         console.log('FAILED...', error.text);
+  //         setMessage('message non reçu');
+  //         setSubmitting(false);
+  //       }
+  //     );
+  // };
+  const sendEmail = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitting(true);
-    emailjs
-      .sendForm('service_t76tx1l', 'template_w0m0cnq', form.current!, {
-        publicKey: 'PF1HJ0vQ3vihAdtYb',
-      })
-      .then(
-        () => {
-          setMessage('Message reçu');
-          setSubmitting(false);
-        },
-        (error) => {
-          console.log('FAILED...', error.text);
-          setMessage('message non reçu');
-          setSubmitting(false);
-        }
-      );
+    try {
+      const response = await fetch('/api/sendEmail', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(emailData),
+      });
+      if (response.ok) {
+        console.log('Email envoyé avec succès');
+        setMessage("Merci de vous être inscrit à la liste d'attente");
+    } else {
+        throw new Error('Erreur lors de l\'envoi de l\'email');
+      }
+    } catch (error) {
+      console.error('Échec de l\'envoi :', error);
+      setMessage("Merci de réessayer ultérieurement");
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmailData({ ...emailData, [e.target.id]: e.target.value });
   };
+
+  useEffect(() => {
+  setEmailData({ ...emailData });
+}, []);
 
   return (
     <div className="form-wrapper">
@@ -53,6 +76,17 @@ const ContactForm = () => {
             id="prenom"
             name="user_name"
             value={emailData.prenom}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+         <div className="form-group">
+          <label>Nom</label>
+          <input
+            type="text"
+            id="nom"
+            name="user_surname"
+            value={emailData.nom}
             onChange={handleInputChange}
             required
           />

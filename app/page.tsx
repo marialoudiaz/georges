@@ -23,7 +23,7 @@ const Etiquette = dynamic(() => import('../components/etiquette'), {
 const Message = dynamic(() => import('../components/message'), {
   loading: () => <p>Loading message...</p>,
 });
-const Formulaire = dynamic(() => import('../components/formulaire'), {
+const Formulaire = dynamic(() => import('../components/formulaire/formulaire'), {
   loading: () => <p>Loading Formulaire...</p>,
 });
 
