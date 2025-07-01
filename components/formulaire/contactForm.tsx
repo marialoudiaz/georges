@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef} from 'react';
 import Image from 'next/image';
 import timbre from '../../public/img/timbre.png';
 import logo from '../../public/georges-signature-aioli.png';
@@ -30,7 +30,7 @@ const ContactForm = () => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmailData({ ...emailData, [e.target.id]: e.target.value });
   };
-  const handleCross = (e:any) => {
+  const handleCross = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     setIsOpen(false);
   };
@@ -41,7 +41,7 @@ const ContactForm = () => {
 
   return (
     <div className="form-wrapper">
-      <h1>Précommander mon pot d'aïoli pour 2026</h1>
+      <h1>Précommander mon pot d&#39;aïoli pour 2026</h1>
 
       <div className="form-header">
         <Image src={logo} width={170} height={50} alt="logo" />
@@ -120,7 +120,7 @@ const ContactForm = () => {
       <div className={`${isOpen ? 'cookies-card' : 'popClose'}`} >
         <p className="cookie-heading">Vous êtes inscrit !</p>
         <p className="cookie-para">
-          Vous êtes désormais dans la liste d'attente pour l'aioli catalan Georges !
+        Vous êtes désormais dans la liste d&#39;attente pour l&#39;aïoli catalan Georges !
         </p>
         <button className="exit-button" onClick={handleCross}>
           <svg
