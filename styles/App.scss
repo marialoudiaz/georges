@@ -476,6 +476,77 @@ select {
 #msg  {
   font-Size:3rem;
 }
+
+.popClose{
+  display: none;
+}
+/* POP UP */ 
+.cookies-card {
+  position: absolute;
+  top: 50%;
+  bottom: 0;
+  left: 10%;
+  right: 10%;
+  width: fit-content;
+  height: fit-content;
+  background-color: rgb(255, 250, 250);
+  border-radius: 10px;
+  border: 1px solid rgb(0, 0, 0);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 20px;
+  gap: 15px;
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.066);
+}
+
+.cookie-heading {
+  color: rgb(34, 34, 34);
+  font-weight: 800;
+}
+.cookie-para {
+  font-size: 11px;
+  font-weight: 400;
+  color: rgb(51, 51, 51);
+}
+.button-wrapper {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.cookie-button {
+  width: 50%;
+  padding: 8px 0;
+  border: none;
+  border-radius: 10rem;
+  cursor: pointer;
+}
+.exit-button {
+  position: absolute;
+  top: 17px;
+  right: 17px;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.exit-button:hover {
+  background-color: #ddd;
+  color: white;
+}
+.svgIconCross {
+  height: 10px;
+}
+
 @media screen and (max-width: 768px) {
 #msg  {
   font-Size:1.5rem;

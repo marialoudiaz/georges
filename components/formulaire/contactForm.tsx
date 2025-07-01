@@ -6,7 +6,8 @@ import logo from '../../public/georges-signature-aioli.png';
 
 const ContactForm = () => {
   const [emailData, setEmailData] = useState({ prenom: '', nom:'', email: '' });
-  const [message, setMessage] = useState('');
+  // const [message, setMessage] = useState('');
+  const [isOpen, setIsOpen] = useState(false);
   // const [submitting, setSubmitting] = useState(false);
   const form = useRef<HTMLFormElement>(null);
 
@@ -39,18 +40,21 @@ const ContactForm = () => {
       });
       if (response.ok) {
         console.log('Email envoyé avec succès');
-        setMessage("Merci de vous être inscrit à la liste d'attente");
+        setIsOpen(true)
     } else {
         throw new Error('Erreur lors de l\'envoi de l\'email');
       }
     } catch (error) {
       console.error('Échec de l\'envoi :', error);
-      setMessage("Merci de réessayer ultérieurement");
     }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmailData({ ...emailData, [e.target.id]: e.target.value });
+  };
+    const handleCross = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    setIsOpen(false);
   };
 
   useEffect(() => {
@@ -132,8 +136,36 @@ const ContactForm = () => {
             </span>
             Envoyer
           </button>
-          {message && <p className="form-message">{message}</p>}
+          {/* {message && <p className="form-message">{message}</p>} */}
       </form>
+
+      <div className={`${isOpen ? 'cookies-card' : 'popClose'}`} >
+        <p className="cookie-heading">Vous êtes inscrit !</p>
+        <p className="cookie-para">
+          Vous êtes désormais dans la liste d'attente pour l'aioli catalan Georges !
+        </p>
+        <button className="exit-button" onClick={handleCross}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 162 162"
+            className="svgIconCross"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-width="17"
+              stroke="black"
+              d="M9.01074 8.98926L153.021 153"
+            ></path>
+            <path
+              stroke-linecap="round"
+              stroke-width="17"
+              stroke="black"
+              d="M9.01074 153L153.021 8.98926"
+            ></path>
+          </svg>
+        </button>
+        </div>
     </div>
   );
 };
