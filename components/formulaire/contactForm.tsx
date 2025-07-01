@@ -7,7 +7,7 @@ import logo from '../../public/georges-signature-aioli.png';
 const ContactForm = () => {
   const [emailData, setEmailData] = useState({ prenom: '', nom:'', email: '' });
   const [message, setMessage] = useState('');
-  const [submitting, setSubmitting] = useState(false);
+  // const [submitting, setSubmitting] = useState(false);
   const form = useRef<HTMLFormElement>(null);
 
   // const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
@@ -103,7 +103,7 @@ const ContactForm = () => {
           />
         </div>
 
-          <button className="button" type="submit" disabled={submitting}>
+          <button className="button" type="submit">
             <span className="button__icon-wrapper">
               <svg
                 viewBox="0 0 14 15"

@@ -26,9 +26,22 @@ export async function POST(request) {
     // Envoi de l'email
     await transporter.sendMail(mailOptions);
 
-    return new Response(JSON.stringify({ message: 'Email envoyé avec succès' }), { status: 200 });
+    // Auto-Reply to User
+    const mailToUser = {
+      from: process.env.SMTP_USER,
+      to: email,
+      subject: `Confirmation d'inscription à la liste d'attente de Georges Aioli Catalan`,
+      text: `Adeu ${prenom} !,
+      Merci de vous être inscrit(e) à ma liste d'attente. Je vous contacterai dès que mon aioli sera prêt à l'achat.
+      À très vite,
+      Georges`,
+    };
+
+    await transporter.sendMail(mailToUser);
+
+    return new Response(JSON.stringify({ message: 'Emails envoyés avec succès' }), { status: 200 });
   } catch (error) {
     console.error(error);
-    return new Response(JSON.stringify({ message: "Erreur lors de l'envoi de l'email" }), { status: 500 });
+    return new Response(JSON.stringify({ message: "Erreur lors de l'envoi des emails" }), { status: 500 });
   }
 }
