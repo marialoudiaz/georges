@@ -20,24 +20,24 @@ const ContactForm = () => {
         console.log('Email envoyé avec succès');
         setIsOpen(true)
     } else {
-        throw new Error('Erreur lors de l\'envoi de l\'email');
+        throw new Error('Erreur lors envoi de email');
       }
     } catch (error) {
-      console.error('Échec de l\'envoi :', error);
+      console.error('Échec envoi :', error);
     }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmailData({ ...emailData, [e.target.id]: e.target.value });
   };
-    const handleCross = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleCross = (e:any) => {
     e.preventDefault();
     setIsOpen(false);
   };
 
-  useEffect(() => {
-  setEmailData({ ...emailData });
-}, []);
+//   useEffect(() => {
+//   setEmailData({ ...emailData });
+// }, []);
 
   return (
     <div className="form-wrapper">
